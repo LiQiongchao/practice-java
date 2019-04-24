@@ -27,8 +27,8 @@ public class Strategy {
             case "8折":
                 cashSuper = new CashRate(0.8);
                 break;
-                default:
-                    return;
+            default:
+                return;
         }
         CashContext context = new CashContext(cashSuper);
         System.out.println(context.getResult(400));
