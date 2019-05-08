@@ -27,7 +27,9 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <!--  不传递该依赖到父依赖中 -->
             <optional>true</optional>
+            <!--  只编译使用，不打包项目中 -->
             <scope>provided</scope>
         </dependency>
         <dependency>
