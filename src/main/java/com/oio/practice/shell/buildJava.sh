@@ -14,13 +14,15 @@ svn update
 rm -rf bin/*
 
 find common -name "*.java" > ${src}
+javac -encoding UTF-8 -Djava.ext.dirs=./lib -cp common/ -d ./bin/ @${src}
 find tool -name "*.java" >> ${src}
+javac -encoding UTF-8 -Djava.ext.dirs=./lib -cp tool/ -d ./bin/ @${src}
 find crmserver -name "*.java" >> ${src}
+javac -encoding UTF-8 -Djava.ext.dirs=./lib -cp crmserver/ -d ./bin/ @${src}
 find customserver -name "*.java" >> ${src}
+javac -encoding UTF-8 -Djava.ext.dirs=./lib -cp customserver/ -d ./bin/ @${src}
 find xhserver -name "*.java" >> ${src}
-
-# can't run
-javac -encoding UTF-8 -Djava.ext.dirs=./lib -d ./bin/ @${src}
+javac -encoding UTF-8 -Djava.ext.dirs=./lib -cp xhserver/ -d ./bin/ @${src}
 
 binCount=$(ls bin/ | wc -w)
 # don't restart if not compile classes
@@ -42,9 +44,4 @@ rm -rf lib/*
 
 cp -rf ${iterDir}/lib/* ./lib/
 
-sh cacheinit.sh all
-
-sh cachecronRestart.sh
-sh custserverRestart.sh
-sh xhserverRestart.sh
-sh ordertimerRestart.sh
+sh cacheinit.sh all && sh cachecronRestart.sh && sh custserverRestart.sh && sh xhserverRestart.sh && sh ordertimerRestart.sh
