@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.annotations.Expose;
 import org.junit.Test;
 
+import java.net.Inet4Address;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
@@ -15,6 +16,22 @@ import java.util.Date;
  * @date 2019/5/15 10:02
  */
 public class UtilTest {
+
+    static int a = 1;
+    int b = 1;
+
+    public static int g(int n) {
+        if (n % 2 == 0)
+            return n/10;
+        return g(g(n/10));
+    }
+
+
+    @Test
+    public void javaTest() {
+        System.out.println(g(3124013));
+
+    }
 
     @Test
     public void dateTest() {
@@ -142,4 +159,20 @@ public class UtilTest {
     }
 
 }
+class Example{
+    public static void Change(int x, int[] y, int[] z) {
+        x = 1;		y[0] = 2;
+        z = new int[5];		z[0] = 555;
+    }
+    public static void main(String[] args) {
+        int x = 111;
+        int[] y = { 222, 333, 444, 555 };
+        int[] z = { 666, 777, 888, 999 };
+        Change(x, y, z);
+        System.out.printf("%d,%d,%d\n",x,y[0],z[0]);
+        int a=1 ,b=2;
+        boolean cc = !(a < b) && !(a > b);
+    }
+}
+
 
