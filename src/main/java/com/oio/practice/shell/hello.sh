@@ -8,7 +8,7 @@ then
 fi
 printf "hello shell"
 
-
+echo $((1+1))
 
 
 
