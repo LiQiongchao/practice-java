@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 
 
+# 测试判断
+temp=
+if test -n "$temp" -a "$temp" != "start" -a "$temp" != "stop" -a "$temp" != "restart"
+then
+    echo 'please input keyword ->> start, stop, restart'
+fi
+
+
+exit
+
 # 测试运算
 pid=
 tempNum=0
