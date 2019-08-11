@@ -17,6 +17,7 @@ public class OperationFactory {
                 return new OperationMul();
             case "/":
                 return new OperationDiv();
+                default:
         }
         return null;
     }
