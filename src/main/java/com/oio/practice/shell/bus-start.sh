@@ -68,7 +68,7 @@ startModule() {
 }
 
 # update jar
-if test $1 = start -o -z "$1"
+if test "$1" = "start" -o -z "$1"
 then
     packageJar
     startModule
