@@ -15,7 +15,7 @@ jarName=bus-${moduleName}-${version}.jar
 packageJar() {
     cd ${appHome}/resource/dev-v${version}
     svn update
-    mvn clean install -DskipTests
+    mvn clean package -DskipTests
     echo 'package success!'
 
     cd ${moduleName}/target/

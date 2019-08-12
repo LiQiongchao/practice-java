@@ -1,4 +1,4 @@
-package com.oio.practice.thread.chapter01;
+package com.oio.practice.thread.chapter01.t1;
 
 /**
  * @author Liqc
@@ -10,6 +10,10 @@ public class MyThreadRun {
         thread.start();
         MyThread1 t = new MyThread1();
         t.start();
+        Thread thread1 = new Thread(() -> {
+            System.out.println("匿名线程");
+        });
+        thread1.start();
         System.out.println("main run over.");
     }
 }
