@@ -21,22 +21,23 @@ public class ThreadRun {
         thread2.start();
         thread3.start();
 
-        MyThread2 myThread1 = new MyThread2("A");
-        MyThread2 myThread2 = new MyThread2("B");
-        MyThread2 myThread3 = new MyThread2("C");
-        MyThread2 myThread4 = new MyThread2("D");
-        MyThread2 myThread5 = new MyThread2("E");
+        MyThread2 thread = new MyThread2();
+        Thread myThread1 = new Thread(thread,"A");
+        Thread myThread2 = new Thread(thread,"B");
+        Thread myThread3 = new Thread(thread,"C");
+        Thread myThread4 = new Thread(thread,"D");
+        Thread myThread5 = new Thread(thread,"E");
         myThread1.start();
         myThread2.start();
         myThread3.start();
         myThread4.start();
         myThread5.start();
         /*
-        13:20:47.833 [E] count value: 4
-        13:20:47.833 [A] count value: 4
-        13:20:47.833 [D] count value: 4
-        13:20:47.833 [B] count value: 4
-        13:20:47.833 [C] count value: 4
+        由 A,计算：4
+        由 E,计算：4
+        由 B,计算：4
+        由 C,计算：4
+        由 D,计算：4
          */
     }
 }
@@ -78,8 +79,8 @@ class MyThread2 extends Thread {
     }
 
     @Override
-    public void run() {
+    synchronized public void run() {
         count--;
-        log.info("thread name: {}, count value: {}", currentThread().getContextClassLoader(), count);
+        System.out.println("由 " + currentThread().getName() + ",计算：" + count);
     }
 }
