@@ -14,12 +14,18 @@ jarName=bus-${moduleName}-${version}.jar
 
 packageJar() {
     cd ${appHome}/resource/dev-v${version}
-    svn update
-    mvn clean install -DskipTests
-    echo 'package success!'
+    localVersion=$(svn info -R | grep "Revision\:" | sort -k 2 -nr | head -n 1 | awk -F ' ' 'NR==1 {print $2}')
+    serverUrl=$(svn info |grep "^URL:" | awk '{print $2}')
+    serverVersion=$(svn info ${serverUrl} |grep "Last Changed Rev:" |awk '{print $4}')
+    if test ${serverVersion} -gt ${localVersion}
+    then
+        svn update
+        mvn clean package -DskipTests
+        cd ${moduleName}/target/
+        cp -f ${jarName} ${appHome}/jar/
+    fi
 
-    cd ${moduleName}/target/
-    cp -f ${jarName} ${appHome}/jar/
+    cd ${appHome}/jar/
     if test -e ${jarName}
     then
         echo "${jarName} is prepared."
@@ -68,7 +74,7 @@ startModule() {
 }
 
 # update jar
-if test $1 = start -o -z "$1"
+if test "$1" = "start" -o -z "$1"
 then
     packageJar
     startModule
