@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
 
+
+# 测试test
+if test 1 -eq 1; then
+    echo 'a'
+   fi
+
+
+exit
 # 字符串要加引号
 #if test 1 -eq 1 -o $1 = start
 if test -z "$1" || "$1" = "start"
