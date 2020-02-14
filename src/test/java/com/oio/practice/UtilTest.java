@@ -9,7 +9,9 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Liqc
@@ -19,6 +21,15 @@ public class UtilTest {
 
     static int a = 1;
     int b = 1;
+
+    @Test
+    public void contains() {
+        List<String> AXB_CHARGING_CALL_TYPE = Arrays.asList("10", "11", "21");
+        System.out.println(AXB_CHARGING_CALL_TYPE.contains("10"));
+        System.out.println(AXB_CHARGING_CALL_TYPE.contains("20"));
+        System.out.println("10,11,21".contains("11"));
+        System.out.println("10,11,21".contains("20"));
+    }
 
     public static int g(int n) {
         if (n % 2 == 0)
