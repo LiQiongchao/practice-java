@@ -8,11 +8,12 @@ fi
 version=1.1
 profile=dev
 appHome=~/hwh-bus
+projectName=hwh-bus
 moduleName=customer
 modulePort=9001
 jarName=bus-${moduleName}-${version}.jar
 
-packageJar() {
+packageJar-svn() {
     cd ${appHome}/resource/dev-v${version}
     localVersion=$(svn info -R | grep "Revision\:" | sort -k 2 -nr | head -n 1 | awk -F ' ' 'NR==1 {print $2}')
     serverUrl=$(svn info |grep "^URL:" | awk '{print $2}')
@@ -30,6 +31,29 @@ packageJar() {
     then
         echo "${jarName} is prepared."
         break
+    fi
+}
+
+packageJar() {
+    cd ${appHome}/resource/${projectName}
+    git fetch
+    isUpdate=$(git pull)
+    if [[ "Already up-to-date." != "${isUpdate}" ]]
+    then
+        echo "Already up-to-date."
+#        exit 会退出当前的shell
+    else
+        mvn clean package -DskipTests
+    fi
+    cd ${moduleName}/target/
+    cp ${appHome}/jar/${jarName} ${appHome}/jar/${jarName}_`date "+%Y-%m-%d %H:%M:%S"`
+    cp -f ${jarName} ${appHome}/jar/
+    cd ${appHome}/jar/
+    if test -f ${jarName}
+    then
+        echo "${jarName} is prepared."
+    else
+        echo "packaging failed!"
     fi
 }
 
@@ -68,7 +92,7 @@ startModule() {
       then
         echo 'launch failed.'
         break
-       fi
+      fi
     done
     echo "start module ${moduleName} pid is ${pid}"
 }
