@@ -15,10 +15,10 @@ public class YieldTest {
     }
     /*
     // Thread.yield()
-    使用：18ms
+    使用：19ms, sum:1283106753
 
     Thread.yield()
-    使用：15001ms
+    使用：15082ms, sum:1283106753
      */
 }
 
@@ -27,11 +27,13 @@ class YieldThread extends Thread {
     public void run() {
         Instant start = Instant.now();
         int sum = 1;
+        int count = 0;
         for (int i = 0; i < 50000000; i++) {
+            count += 1; // 50000000
             Thread.yield();
             sum += i;
         }
         Instant end = Instant.now();
-        System.out.println("使用：" + (Duration.between(start, end).toMillis()) + "ms");
+        System.out.println("使用：" + (Duration.between(start, end).toMillis()) + "ms, sum:" + sum);
     }
 }
