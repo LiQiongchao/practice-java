@@ -1,4 +1,4 @@
-package com.oio.practice.thread.chapter03;
+package com.oio.practice.thread.chapter03.t1;
 
 /**
  * 处于wait()阻塞的方法使用interrupt()方法后会抛出InterruptedException异常

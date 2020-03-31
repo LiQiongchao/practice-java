@@ -1,4 +1,4 @@
-package com.oio.practice.thread.chapter03;
+package com.oio.practice.thread.chapter03.t1;
 
 /**
  * Notify()方法执行完不会立即释放锁，只有执行完方法所在的同步代码块才会释放锁。

@@ -1,4 +1,4 @@
-package com.oio.practice.thread.chapter03;
+package com.oio.practice.thread.chapter03.t1;
 
 /**
  * wait()方法执行这行代码后会进入阻塞队列，同时释放锁。

@@ -1,4 +1,4 @@
-package com.oio.practice.thread.chapter03;
+package com.oio.practice.thread.chapter03.t1;
 
 /**
  * notify()一次只能唤醒一个线程。想唤醒多个线程时，需要多次调用。

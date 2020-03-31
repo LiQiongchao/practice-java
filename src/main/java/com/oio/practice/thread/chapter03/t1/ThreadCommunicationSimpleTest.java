@@ -1,6 +1,5 @@
-package com.oio.practice.thread.chapter03;
+package com.oio.practice.thread.chapter03.t1;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
 import lombok.Data;
 
 import java.util.ArrayList;
