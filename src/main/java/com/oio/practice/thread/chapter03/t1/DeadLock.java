@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * 死锁现象
  * 消费唤醒的是消费，所以生产一起在wait()，最后都进入wait()状态了。
+ * 解决死锁：把notify()全部改成notifyAll()即可。
  * @author Liqc
  * @date 2020/3/31 14:05
  */
