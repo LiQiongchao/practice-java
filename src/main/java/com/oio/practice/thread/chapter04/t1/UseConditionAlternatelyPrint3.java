@@ -14,7 +14,7 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class UseConditionAlternatelyPrint3 {
     public static void main(String[] args) {
-        ConditionAlternatelyPrintService2 service = new ConditionAlternatelyPrintService2();
+        ConditionAlternatelyPrintService3 service = new ConditionAlternatelyPrintService3();
         new Thread(()-> {
             for (int i = 0; true; i++) {
                 System.out.println(i);
@@ -30,7 +30,7 @@ public class UseConditionAlternatelyPrint3 {
 }
 
 @Data
-class ConditionAlternatelyPrintService2 {
+class ConditionAlternatelyPrintService3 {
     private Lock lock = new ReentrantLock();
     private Condition conditionB = lock.newCondition();
     private Condition conditionA = lock.newCondition();

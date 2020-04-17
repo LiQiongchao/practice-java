@@ -1,4 +1,4 @@
-package com.oio.practice.thread.chapter04;
+package com.oio.practice.thread.chapter04.t1;
 
 import lombok.Data;
 
