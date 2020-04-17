@@ -1,4 +1,4 @@
-package com.oio.practice.thread.chapter04.t1;
+package com.oio.practice.thread.chapter04;
 
 import lombok.Data;
 
@@ -8,7 +8,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * 使用Condition实现3个线程交替打印
- * 注: 会有死锁现象，大家都进入wait了
+ * 注: 会有死锁现象，大家都进入wait了(A没有wait, C就sign了，导致无效的sign,当A再抢到锁，wait时，没有人来唤醒A了。)
+ *  解决：要保证该B执行的时候，不走wait方法，直接往下执行。
  * @author Liqc
  * @date 2020/4/8 13:51
  */
