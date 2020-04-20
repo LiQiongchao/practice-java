@@ -1,4 +1,4 @@
-package com.oio.practice.thread.chapter06;
+package com.oio.practice.thread.chapter06.t1.state;
 
 /**
  * 测试线程状态 TIME_WAITING
