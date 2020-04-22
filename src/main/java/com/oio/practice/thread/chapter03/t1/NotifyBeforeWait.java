@@ -27,6 +27,11 @@ public class NotifyBeforeWait {
         synchronized (lock) {
             System.out.println("notify begin");
             lock.notify();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             System.out.println("notify end");
             isFirstB = true;
         }
