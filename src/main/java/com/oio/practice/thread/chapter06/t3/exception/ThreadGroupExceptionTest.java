@@ -20,16 +20,6 @@ public class ThreadGroupExceptionTest {
 死循环中：线程1
 Exception in thread "线程报错" 死循环中：线程1
 死循环中：线程1
-死循环中：线程1
-死循环中：线程1
-死循环中：线程5
-死循环中：线程5
-死循环中：线程1
-死循环中：线程1
-死循环中：线程1
-死循环中：线程1
-死循环中：线程1
-死循环中：线程1
 死循环中：线程10
 java.lang.NumberFormatException: For input string: "q"
 死循环中：线程10
