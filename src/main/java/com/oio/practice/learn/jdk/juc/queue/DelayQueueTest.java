@@ -38,6 +38,9 @@ public class DelayQueueTest {
     }
 }
 
+/**
+ * DelayQueue中存储的对象必须要继承Delayed
+ */
 class Student implements Delayed {
 
     private String name;
