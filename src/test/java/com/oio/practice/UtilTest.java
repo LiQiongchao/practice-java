@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Liqc
@@ -19,8 +20,14 @@ import java.util.List;
  */
 public class UtilTest {
 
-    static int a = 1;
-    int b = 1;
+
+    @Test
+    public void timeUnitTest() {
+        long l = System.currentTimeMillis();
+        System.out.println(l);
+        System.out.println(TimeUnit.NANOSECONDS.convert(l, TimeUnit.MILLISECONDS));
+        System.out.println(System.nanoTime());
+    }
 
     @Test
     public void contains() {
