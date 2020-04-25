@@ -11,7 +11,7 @@ import java.util.concurrent.BlockingQueue;
  * @Author: LiQiongchao
  * @Date: 2020/4/25 22:43
  */
-public class BlockingQueueTest {
+public class ArrayBlockingQueueTest {
 
     public static void main(String[] args) {
         final BlockingQueue<String> queue = new ArrayBlockingQueue<>(16);
