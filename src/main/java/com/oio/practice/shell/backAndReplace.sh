@@ -13,3 +13,5 @@ sh custserverRestart.sh
 
 # 备份这次的代码
 mv bin.zip backups/bin_${time}.zip
+# 删除30天之前的备份
+find ${back_dir_name} -name "bin*" -type f -ctime +30 | xargs rm -rf
