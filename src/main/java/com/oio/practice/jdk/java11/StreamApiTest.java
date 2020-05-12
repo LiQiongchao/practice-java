@@ -12,6 +12,21 @@ import java.util.stream.Stream;
 public class StreamApiTest {
 
     /**
+     * Stream无限流方法iterate()增加了停止条件的判断hasNext参数
+     * iterate(T seed, Predicate<? super T> hasNext, UnaryOperator<T> next)
+     */
+    @Test
+    public void iterateTest() {
+        // jdk8中，会一直执行下去，如果停止，使用limit方法，比如执行10次停止。
+        Stream<Integer> iterateStream = Stream.iterate(1, t -> t * 2);
+        iterateStream.limit(10).forEach(System.out::println);
+        System.out.println("*************************************");
+        // JDK11中增加根据条件终止无限流
+        Stream<Integer> iterateStream2 = Stream.iterate(1, t -> t < 1000, t -> t * 2);
+        iterateStream2.forEach(System.out::println);
+    }
+
+    /**
      * 测试
      * takeWhile(Predicate<? super T> predicate)
      * dropWhile(Predicate<? super T> predicate)
