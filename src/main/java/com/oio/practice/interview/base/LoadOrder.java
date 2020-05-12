@@ -1,7 +1,5 @@
 package com.oio.practice.interview.base;
 
-import com.sun.org.apache.xerces.internal.impl.xpath.XPath;
-
 /**
  * Java 静态变量，代码块，父子类等的加载顺序
  * @author Liqc

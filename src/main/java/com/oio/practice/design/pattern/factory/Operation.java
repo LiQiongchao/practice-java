@@ -1,6 +1,5 @@
 package com.oio.practice.design.pattern.factory;
 
-import com.sun.xml.internal.ws.wsdl.writer.document.OpenAtts;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
