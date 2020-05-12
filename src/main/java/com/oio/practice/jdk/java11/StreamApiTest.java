@@ -21,7 +21,7 @@ public class StreamApiTest {
         Stream<Integer> iterateStream = Stream.iterate(1, t -> t * 2);
         iterateStream.limit(10).forEach(System.out::println);
         System.out.println("*************************************");
-        // JDK11中增加根据条件终止无限流
+        // JDK11中增加根据条件终止无限流，产生的值只能少于1000，否则就终止
         Stream<Integer> iterateStream2 = Stream.iterate(1, t -> t < 1000, t -> t * 2);
         iterateStream2.forEach(System.out::println);
     }
