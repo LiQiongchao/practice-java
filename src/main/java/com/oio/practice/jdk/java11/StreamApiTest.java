@@ -12,6 +12,26 @@ import java.util.stream.Stream;
 public class StreamApiTest {
 
     /**
+     * 测试
+     * takeWhile(Predicate<? super T> predicate)
+     * dropWhile(Predicate<? super T> predicate)
+     */
+    @Test
+    public void whileTest() {
+        Stream<Integer> stream = Stream.of(1, 3, 5, 6, 8, 3);
+        // 根据条件取流中的元素，直到为假时停止。
+        Stream<Integer> takeStream = stream.takeWhile(s -> s < 6);
+        takeStream.forEach(System.out::print);
+        // 135
+        System.out.println("\n *******************************");
+        Stream<Integer> streamOr = Stream.of(1, 3, 5, 6, 8, 3);
+        // 根据条件删除流中的数据，直到遇到不符合条件的数据时，停止操作。
+        Stream<Integer> dropStream = streamOr.dropWhile(s -> s < 6);
+        dropStream.forEach(System.out::print);
+        // 683
+    }
+
+    /**
      * 新API ofNullable()方法测试
      */
     @Test
