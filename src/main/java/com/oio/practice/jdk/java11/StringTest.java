@@ -2,6 +2,8 @@ package com.oio.practice.jdk.java11;
 
 import org.junit.Test;
 
+import java.util.stream.Stream;
+
 /**
  * java11字符新增方法测试
  * @author Liqc
@@ -27,5 +29,21 @@ public class StringTest {
         System.out.println(str.stripTrailing());
 
     }
+
+    @Test
+    public void repeatTest() {
+        // repeat(int count) 字符串重count次
+        System.out.println("hello ".repeat(3));
+        // hello hello hello
+    }
+
+    @Test
+    public void linesTest() {
+        // lines() 会把字符按行分隔，生成一个流。
+        Stream<String> stream = "abc\n123\nddd".lines();
+        System.out.println(stream.count());
+        // 3
+    }
+
 
 }
