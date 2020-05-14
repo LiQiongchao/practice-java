@@ -7,6 +7,8 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @author Liqc
@@ -33,16 +35,21 @@ public class HttpClientTest {
     }
 
     @Test
-    public void httpAsyncTest() throws IOException, InterruptedException {
+    public void httpAsyncTest() throws IOException, InterruptedException, ExecutionException {
         // 封装请求
         HttpRequest request = HttpRequest.newBuilder().uri(URI.create("http://httpbin.org/ip")).GET().build();
 
         // 创建HttpClient
         HttpClient httpClient = HttpClient.newHttpClient();
         // 异常步请求
-        httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString())
-                .thenApply(HttpResponse::body)
-                .thenAccept(System.out::println);
+        CompletableFuture<HttpResponse<String>> future = httpClient.sendAsync(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> response = future.get();
+        System.out.println(response.body());
+        /*
+        {
+          "origin": "124.204.33.82"
+        }
+         */
     }
 
 
