@@ -1,4 +1,4 @@
-package com.oio.practice.interview.atguigu.second;
+package com.oio.practice.interview.atguigu.second.volatil;
 
 import java.util.concurrent.TimeUnit;
 
