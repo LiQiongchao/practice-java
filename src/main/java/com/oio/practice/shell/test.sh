@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 
 
+# 测试字符串截取
+str=202010281044.tar
+echo ${str:0:8}
+# echo $1 0~8
+echo ${1:0:8}
+
+
+
+
+exit
 
 # 测试test
 if test 1 -eq 1; then
