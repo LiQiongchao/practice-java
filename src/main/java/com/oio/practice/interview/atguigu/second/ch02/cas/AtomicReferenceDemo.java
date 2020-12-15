@@ -1,4 +1,4 @@
-package com.oio.practice.interview.atguigu.second.cas;
+package com.oio.practice.interview.atguigu.second.ch02.cas;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
