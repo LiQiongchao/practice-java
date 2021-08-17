@@ -45,7 +45,7 @@ down_recording() {
             printf "${file_name} download from server ${serverAddr} successful! \n"
         else
             printf "${file_name} download from server ${serverAddr} failure! \n"
-            exit
+            continue
         fi
         # 不为空的话就解压文件
         if [[ ! -s ${file_name} ]]; then

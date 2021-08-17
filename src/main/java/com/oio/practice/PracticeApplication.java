@@ -1,5 +1,6 @@
 package com.oio.practice;
 
+import com.thebeastshop.forest.springboot.annotation.ForestScan;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -11,6 +12,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@ForestScan(basePackages = "com.oio.practice.framework.forest")
 @SpringBootApplication
 public class PracticeApplication {
 
