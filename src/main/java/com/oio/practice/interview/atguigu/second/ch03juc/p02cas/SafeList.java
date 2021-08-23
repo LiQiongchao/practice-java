@@ -1,4 +1,4 @@
-package com.oio.practice.interview.atguigu.second.cas;
+package com.oio.practice.interview.atguigu.second.ch03juc.p02cas;
 
 import java.time.Duration;
 import java.time.Instant;

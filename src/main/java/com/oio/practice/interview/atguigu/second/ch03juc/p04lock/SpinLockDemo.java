@@ -1,4 +1,4 @@
-package com.oio.practice.interview.atguigu.second.ch03.lock;
+package com.oio.practice.interview.atguigu.second.ch03juc.p04lock;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;

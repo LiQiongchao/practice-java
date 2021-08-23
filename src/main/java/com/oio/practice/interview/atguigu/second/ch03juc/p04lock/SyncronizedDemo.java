@@ -1,4 +1,4 @@
-package com.oio.practice.interview.atguigu.second.ch03.lock;
+package com.oio.practice.interview.atguigu.second.ch03juc.p04lock;
 class Phone{
     public synchronized void sendSms() throws Exception{
         System.out.println(Thread.currentThread().getName()+"\tsendSms");

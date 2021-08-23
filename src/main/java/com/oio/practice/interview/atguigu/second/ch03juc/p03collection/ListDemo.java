@@ -1,4 +1,4 @@
-package com.oio.practice.interview.atguigu.second.ch03.collection;
+package com.oio.practice.interview.atguigu.second.ch03juc.p03collection;
 
 import java.util.ArrayList;
 import java.util.List;
