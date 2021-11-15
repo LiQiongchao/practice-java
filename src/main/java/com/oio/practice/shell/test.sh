@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
+# 测试遍历
+arr=(202109012022.tar 202109011950.tar 202109011913.tar 202109011841.tar)
+for VAR in ${arr[@]} ; do
+    printf "${VAR} \n"
+done
 
+
+
+exit
 # 测试字符串截取
 str=202010281044.tar
 echo ${str:0:8}
