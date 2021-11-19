@@ -53,8 +53,8 @@ public class MaximumSubarray {
 
     /**
      * 方法一：贪心算法
-     * 使用二个变量，一个记录最大值，一个记录当前连续累加值。
-     * 如果之前的累加小于0，则丢弃。一直记录过程中产生的最大值。
+     *     使用二个变量，一个记录最大值，一个记录当前连续累加值。
+     *     如果之前的累加小于0，则丢弃。一直记录过程中产生的最大值。
      *
      * @param nums
      * @return
@@ -69,6 +69,7 @@ public class MaximumSubarray {
 
         int cur = sum;
         for (int i = 1; i < nums.length; i++) {
+            // 如果之前的和小于0，则抛弃之前的值
             // 若当前的值之前的和小于0，则丢弃当前元素之前的和
             int indexVal = nums[i];
             cur = Math.max(cur + indexVal, indexVal);
@@ -76,6 +77,33 @@ public class MaximumSubarray {
             sum = Math.max(cur, sum);
         }
         return sum;
+    }
+
+    /**
+     * 动态规划算法
+     *  穷举分析
+     *  确定边界
+     *  找规律，确定最优子结构
+     *  状态转移方程
+     *
+     * 思路：每个数前面的数大于0就加到当前数上，走完后取最大值就是结果
+     *
+     * @param nums
+     * @return
+     */
+    private int solutionTwo(int[] nums) {
+        if (nums.length == 1) {
+            return nums[0];
+        }
+        int maxVal = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            int pre = nums[i - 1];
+            if (pre > 0) {
+                nums[i] = nums[i] + pre;
+            }
+            maxVal = Math.max(maxVal, nums[i]);
+        }
+        return maxVal;
     }
 
 }
