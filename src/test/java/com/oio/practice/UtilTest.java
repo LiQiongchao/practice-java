@@ -20,8 +20,19 @@ import java.util.concurrent.TimeUnit;
 public class UtilTest {
 
     @Test
+    public void listTest() {
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(1, 4);
+        list.forEach(System.out::println);
+    }
+
+
+    @Test
     public void randomTest() {
-        ArrayList<String> nums = Lists.newArrayList("13112414926", "18675470301", "13265647689", "18575973626", "13035710059", "18576297154", "15622999472", "18587724054", "18577203204", "15676228479", "15677454057", "15678522104", "18577704615", "15677877439", "18577946594", "18679084763", "13257081547", "13247827674", "18679340341", "13263944807", "18507951407", "18579665943", "13097318394", "13044986145", "13177996934", "13116304004", "17586434994", "15697048540", "18687594249", "13298974768", "18589622418", "13220044160", "18691796641", "13028704917", "15693267427", "13263249482", "13239444274", "15593084573", "15595428742", "17697414564");
+        ArrayList<String> nums = Lists.newArrayList("15595428x42", "17697414x64");
         Set<Integer> set = new HashSet<>(11);
         while (set.size() < 10) {
             int i = new Random().nextInt(39);
