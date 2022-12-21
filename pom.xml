@@ -99,6 +99,12 @@
             </exclusions>
         </dependency>
 
+        <dependency>
+            <groupId>org.python</groupId>
+            <artifactId>jython-standalone</artifactId>
+            <!--python版本是2.x还是3.x在这里指定-->
+            <version>2.7.2</version>
+        </dependency>
 
     </dependencies>
 
@@ -112,8 +118,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>12</source>
-                    <target>12</target>
+                    <source>11</source>
+                    <target>11</target>
                 </configuration>
             </plugin>
         </plugins>
