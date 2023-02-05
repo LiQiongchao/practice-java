@@ -17,6 +17,7 @@
     <properties>
         <java.version>13</java.version>
         <org.mapstruct.version>1.4.1.Final</org.mapstruct.version>
+        <POI.version>4.1.2</POI.version>
     </properties>
 
     <dependencies>
@@ -104,6 +105,30 @@
             <artifactId>jython-standalone</artifactId>
             <!--python版本是2.x还是3.x在这里指定-->
             <version>2.7.2</version>
+        </dependency>
+
+        <!-- POI 处理 Excel -->
+        <!--<dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${POI.version}</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-scratchpad</artifactId>
+            <version>${POI.version}</version>
+        </dependency>
+        <!-- 为POI支持Office Open XML -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>${POI.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml-schemas</artifactId>
+            <version>${POI.version}</version>
         </dependency>
 
     </dependencies>
