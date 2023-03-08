@@ -4,11 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnails;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.URL;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -59,6 +55,12 @@ public class ImageCompress {
          */
         Thumbnails.of("src/main/resources/static/img/001.jpg").scale(0.5f).outputQuality(0.5).toFile("D:/image_25%.jpg");
 
+    }
+
+    @Test
+    public void addWatermark() throws IOException {
+        String img = "d:/002.jpg";
+        ImageUtil.addWatermarkToImage(img);
     }
 
 }
