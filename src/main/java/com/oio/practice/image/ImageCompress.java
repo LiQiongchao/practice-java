@@ -53,7 +53,13 @@ public class ImageCompress {
          * scale 是图片缩放的比例。值在0到1之间，1f就是原图大小，0.5就是原图的一半大小，这里的大小是指图片的长宽。
          * outputQuality 是输出图片的质量。值也是在0到1，越接近于1质量越好，越接近于0质量越差。
          */
-        Thumbnails.of("src/main/resources/static/img/001.jpg").scale(0.5f).outputQuality(0.5).toFile("D:/image_25%.jpg");
+        // Thumbnails.of("src/main/resources/static/img/001.jpg").scale(0.5f).outputQuality(0.5).toFile("D:/image_50%.jpg");
+
+        /**
+         * 不压缩图片大小的情况下，压缩质量为0.7，6M的图片可以压缩到2.9M，压缩质量为0.5，可以压缩到2.2M。
+         * 图片尺寸压缩50%，质量压缩0.5，6M的图片压缩后为256kb。
+         */
+        Thumbnails.of("C:\\Users\\Qiongchao\\Downloads\\1.jpg").scale(1f).outputQuality(0.5).toFile("C:\\Users\\Qiongchao\\Downloads/image_1f_50%.jpg");
 
     }
 

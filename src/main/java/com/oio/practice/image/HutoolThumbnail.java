@@ -1,5 +1,6 @@
 package com.oio.practice.image;
 
+import cn.hutool.core.img.Img;
 import cn.hutool.core.img.ImgUtil;
 import cn.hutool.core.io.FileUtil;
 import org.junit.Test;
@@ -35,6 +36,13 @@ public class HutoolThumbnail {
                 -120, //y坐标修正值。 默认在中间，偏移量相对于中间偏移
                 0.6f//透明度：alpha 必须是范围 [0.0, 1.0] 之内（包含边界值）的一个浮点数字
         );
+    }
+
+    @Test
+    public void compress() {
+        Img.from(FileUtil.file("C:\\Users\\Qiongchao\\Downloads\\1.jpg"))
+                .setQuality(0.3)//压缩比率
+                .write(FileUtil.file("C:\\Users\\Qiongchao\\Downloads\\1-0.3.jpg"));
     }
 
 }
