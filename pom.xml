@@ -148,6 +148,13 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
 
+        <!-- 操作Office文件，See more:https://www.e-iceblue.com/Download/office-for-java-free.html -->
+        <dependency>
+            <groupId>e-iceblue</groupId>
+            <artifactId>spire.office.free</artifactId>
+            <version>5.3.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -166,5 +173,13 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>com.e-iceblue</id>
+            <name>e-iceblue</name>
+            <url>https://repo.e-iceblue.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
 
 </project>

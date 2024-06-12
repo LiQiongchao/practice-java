@@ -1,8 +1,12 @@
 package com.oio.practice.image;
 
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.img.Img;
 import cn.hutool.core.img.ImgUtil;
 import cn.hutool.core.io.FileUtil;
+import lombok.extern.slf4j.Slf4j;
+import net.coobird.thumbnailator.Thumbnails;
+import net.coobird.thumbnailator.geometry.Coordinate;
 import org.junit.Test;
 
 import javax.imageio.ImageIO;
@@ -12,11 +16,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.time.Instant;
+import java.util.Date;
 
 /**
  * @Author: Liqc
  * @Date: 2023/2/20 11:51
  */
+@Slf4j
 public class HutoolThumbnail {
 
     @Test
