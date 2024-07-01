@@ -70,10 +70,19 @@ public class OfficeHomePageThumbnail {
      * 压缩图片
      * @param quality
      */
-    private static void compressImg(double quality) {
-        Img.from(FileUtil.file("C:\\Users\\Qiongchao\\Desktop\\test\\02--支委会确定发展对象记录格式_01.jpg"))
+    public static void compressImg(double quality) {
+        compressImg(quality, "C:\\Users\\Qiongchao\\Desktop\\test\\1.jpg", "C:\\Users\\Qiongchao\\Desktop\\test\\3.jpg");
+    }
+
+
+    /**
+     * 压缩图片
+     * @param quality
+     */
+    public static void compressImg(double quality, String inputPath, String outputPath) {
+        Img.from(FileUtil.file(inputPath))
                 .setQuality(quality) //压缩比率
-                .write(FileUtil.file("C:\\Users\\Qiongchao\\Desktop\\test\\02--支委会确定发展对象记录格式_03.jpg"));
+                .write(FileUtil.file(outputPath));
     }
 
 
