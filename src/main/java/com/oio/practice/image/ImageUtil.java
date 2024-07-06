@@ -1,8 +1,11 @@
 package com.oio.practice.image;
 
 import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.img.ImgUtil;
+import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.lang.func.Func;
 import cn.hutool.core.util.ByteUtil;
+import cn.hutool.core.util.RandomUtil;
 import io.netty.util.internal.StringUtil;
 import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnails;
@@ -10,6 +13,7 @@ import net.coobird.thumbnailator.geometry.Coordinate;
 import net.coobird.thumbnailator.geometry.Positions;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.junit.Test;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
@@ -269,6 +273,61 @@ public class ImageUtil {
             returnValue = returnValue + randomInt;
         }
         return returnValue;
+    }
+
+    /**
+     * 裁剪图片到A4大小
+     */
+    @Test
+    public void imageCropToA4 () throws IOException {
+        // A4尺寸的宽度和高度（以像素为单位）
+        int a4Width = 595;
+        int a4Height = 842;
+        // int a4Width = 792;
+        // int a4Height = 1122;
+
+        boolean isScale = false;
+        int xOffset = 0;
+        int yOffset = 0;
+
+        File inputFile = FileUtil.file("C:\\Users\\Qiongchao\\Desktop\\template\\template-out\\native\\社区工作过程记录表.png");
+        File outFile = FileUtil.file("C:\\Users\\Qiongchao\\Desktop\\template\\template-out\\native\\社区工作过程记录表-1.png");
+
+        // 先计算水印图片的大小，如果水印图片太大，无法添加图片水印
+        BufferedImage image = ImageIO.read(inputFile);
+        int iw = image.getWidth(null);
+        int ih = image.getHeight(null);
+
+        // 获取要裁剪的位置
+        BufferedImage wImage = ImageIO.read(inputFile);
+        int ww = wImage.getWidth(null);
+        int wh = wImage.getHeight(null);
+        int width, height, startHeight;
+        width = Math.min(ww, iw);
+        height = Math.min(ih, wh);
+        // 图片的原点在左上角，x向右是增加，y向下是增加
+        if (wh <= ih) {
+            startHeight = 0;
+        } else {
+            int halfWh = wh / 2;
+            startHeight = halfWh - (ih / 2);
+            if ((startHeight + yOffset + ih) <= wh) {
+                startHeight += yOffset;
+            }
+        }
+
+        String watermarkImg = inputFile.getName();
+        // 新的水印图片，水印图片太大，需要压缩
+        int index = watermarkImg.lastIndexOf(".");
+        // 文件名加后缀
+        String newWaterMarkImg = watermarkImg.substring(0, index) + "-" + RandomUtil.randomInt(0, 100) + Instant.now().toEpochMilli() + watermarkImg.substring(index + 1);
+
+        ImgUtil.cut(
+                inputFile,
+                outFile,
+                // new Rectangle(0, 3254, 1586, 2244)//裁剪的矩形区域, 图像切割(按指定起点坐标和宽高切割)
+                new Rectangle(0, startHeight, width, height)//裁剪的矩形区域
+        );
     }
 
 
