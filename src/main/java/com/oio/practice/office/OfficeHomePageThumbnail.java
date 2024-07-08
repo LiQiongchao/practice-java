@@ -287,6 +287,40 @@ public class OfficeHomePageThumbnail {
 
 
     public static void main(String[] args) throws Exception {
+        // 递归生成蒙层图和缩略图
+        // recursionGenerateImage();
+
+        // 生成蒙层图
+        generateWatermarkImage();
+    }
+
+    private static void generateWatermarkImage() {
+        String outFolder = "E:\\Syncthing\\firm_workspace\\JF02_社小智\\OPS2024-7-4_人工导入全部模板\\template\\template-out\\addwater";
+        String watermarkImg = "E:\\Syncthing\\firm_workspace\\JF02_社小智\\OPS2024-7-4_人工导入全部模板\\template\\watermark-793x1122.png";
+        Path path = Paths.get("E:\\Syncthing\\firm_workspace\\JF02_社小智\\OPS2024-7-4_人工导入全部模板\\template\\template-out\\native");
+        try (DirectoryStream<Path> stream = Files.newDirectoryStream(path)) {
+            for (Path entry : stream) {
+                String fullFileName = entry.getFileName().toString();
+                log.info("开始处理文件：{}", fullFileName);
+
+                int index = fullFileName.lastIndexOf(".");
+                // 文件后缀
+                String fileName = fullFileName.substring(0, index);
+                String fileSuffix = fullFileName.substring(index + 1).toLowerCase();
+                // 加蒙层
+                String watermarkFilePath = outFolder + "\\" + fullFileName;
+                addMaskWatermark(entry.toFile().getAbsolutePath(), watermarkImg, watermarkFilePath);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
+     * 递归生成蒙层图和缩略图
+     */
+    private static void recursionGenerateImage() {
         LocalDateTime start = LocalDateTime.now();
         String basePath = "E:\\template\\";
         String baseFolder = basePath + "template-all";
