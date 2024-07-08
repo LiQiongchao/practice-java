@@ -295,9 +295,9 @@ public class OfficeHomePageThumbnail {
     }
 
     private static void generateWatermarkImage() {
-        String outFolder = "E:\\Syncthing\\firm_workspace\\JF02_社小智\\OPS2024-7-4_人工导入全部模板\\template\\template-out\\addwater";
-        String watermarkImg = "E:\\Syncthing\\firm_workspace\\JF02_社小智\\OPS2024-7-4_人工导入全部模板\\template\\watermark-793x1122.png";
-        Path path = Paths.get("E:\\Syncthing\\firm_workspace\\JF02_社小智\\OPS2024-7-4_人工导入全部模板\\template\\template-out\\native");
+        String outFolder = "E:\\template\\template-out\\addwater";
+        String watermarkImg = "E:\\template\\watermark-793x1122.png";
+        Path path = Paths.get("E:\\template\\template-out\\native");
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(path)) {
             for (Path entry : stream) {
                 String fullFileName = entry.getFileName().toString();
