@@ -79,7 +79,7 @@ public class OfficeHomePageThumbnail {
             // File file = new File(outputImgPath);
             // String imageName = name + (i == 0 ? "" : String.format(("-%d"), i)) + ".jpg";
             String imageName = name + ".jpg";
-            File file = new File(outputImgPath + "\\" + imageName);
+            File file = new File(outputImgPath + File.separator + imageName);
 
             ImageIO.write(newImg, "JPEG", file);
 
@@ -120,7 +120,7 @@ public class OfficeHomePageThumbnail {
 
             //Save images to a specific folder as a .png files
             String imageName = name + (i == 0 ? "" : String.format(("-%d"), i)) + ".png";
-            File file = new File(outputImgPath + "\\" + imageName);
+            File file = new File(outputImgPath + File.separator + imageName);
 
             ImageIO.write(image, "PNG", file);
 
@@ -157,7 +157,7 @@ public class OfficeHomePageThumbnail {
 
         String imageName = name + ".png";
         //Save the sheet to an image
-        sheet.saveToImage(outputImgPath + "\\" + imageName);
+        sheet.saveToImage(outputImgPath + File.separator + imageName);
     }
 
 
@@ -185,6 +185,7 @@ public class OfficeHomePageThumbnail {
 
     /**
      * 添加图片水印
+     * @Param watermarkFile 水印图片, 水印图片的尺寸要和图片一致，太大会导致压缩，无法正常使用！
      */
     private static void addImgWatermark(String inputFile, String outputFile, String watermarkFile) {
         ImgUtil.pressImage(
@@ -288,16 +289,17 @@ public class OfficeHomePageThumbnail {
 
     public static void main(String[] args) throws Exception {
         // 递归生成蒙层图和缩略图
-        // recursionGenerateImage();
+         recursionGenerateImage();
 
         // 生成蒙层图
-        generateWatermarkImage();
+//        generateWatermarkImage();
+
     }
 
     private static void generateWatermarkImage() {
-        String outFolder = "E:\\template\\template-out\\addwater";
-        String watermarkImg = "E:\\template\\watermark-793x1122.png";
-        Path path = Paths.get("E:\\template\\template-out\\native");
+        String outFolder = "/Users/liqiongchao/Downloads/template-out/addwater";
+        String watermarkImg = "/Users/liqiongchao/Downloads/water.png";
+        Path path = Paths.get("/Users/liqiongchao/Downloads/template-out//native");
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(path)) {
             for (Path entry : stream) {
                 String fullFileName = entry.getFileName().toString();
@@ -308,7 +310,7 @@ public class OfficeHomePageThumbnail {
                 String fileName = fullFileName.substring(0, index);
                 String fileSuffix = fullFileName.substring(index + 1).toLowerCase();
                 // 加蒙层
-                String watermarkFilePath = outFolder + "\\" + fullFileName;
+                String watermarkFilePath = outFolder + File.separator + fullFileName;
                 addMaskWatermark(entry.toFile().getAbsolutePath(), watermarkImg, watermarkFilePath);
             }
         } catch (IOException e) {
@@ -319,13 +321,20 @@ public class OfficeHomePageThumbnail {
 
     /**
      * 递归生成蒙层图和缩略图
+     * test: 要生成的 office 的文件夹
+     * template-out: 输出文件夹
+     *  template-out/native: 原文件首页图片
+     *  template-out/addwater: 蒙层图片
+     *  template-out/thumbnail: 缩略图
      */
     private static void recursionGenerateImage() {
         LocalDateTime start = LocalDateTime.now();
-        String basePath = "E:\\template\\";
-        String baseFolder = basePath + "template-all";
+        String basePath = "/Users/liqiongchao/Downloads/";
+        String baseFolder = basePath + "test";
         String outFolder = basePath + "template-out";
-        String watermarkFile = basePath + "watermark-cut.png";
+        // 蒙层图片，蒙层图片不能太大，否则会无法添加水印
+        // resources/static/img/watermark-793x1122.png
+        String watermarkFile = basePath + "water-793x1122.png";
         Path folderPath = Paths.get(baseFolder); //替换为你的文件夹路径
 
         ExecutorService executorService = Executors.newFixedThreadPool(2);
@@ -353,7 +362,7 @@ public class OfficeHomePageThumbnail {
         String fileSuffix = fullFileName.substring(index + 1).toLowerCase();
 
         String imageSuffix = ".png";
-        String nativePath = outFolder + "\\native";
+        String nativePath = outFolder + File.separator + "native";
         try {
             if (fileSuffix.equals("docx") || fileSuffix.equals("doc")) {
                 imageSuffix = ".jpg";
@@ -367,16 +376,16 @@ public class OfficeHomePageThumbnail {
             log.info("【{}】转换图片消耗：{} s", fullFileName, Duration.between(fileStart, imageTime).getSeconds());
 
             String imageFileName = fileName + imageSuffix;
-            String imageFilePath = outFolder + "\\native\\" + imageFileName;
+            String imageFilePath = outFolder + File.separator + "native" + File.separator + imageFileName;
 
             // 加蒙层
-            String watermarkFilePath = outFolder + "\\addwater\\" + imageFileName;
+            String watermarkFilePath = outFolder + File.separator + "addwater" + File.separator + imageFileName;
             addMaskWatermark(imageFilePath, watermarkFile, watermarkFilePath);
             LocalDateTime waterTime = LocalDateTime.now();
             log.info("【{}】图片添加水印消耗：{} s", fullFileName, Duration.between(imageTime, waterTime).getSeconds());
 
             // 缩略图，输出只支持 jpg
-            String miniFileName = outFolder + "\\mini\\" + fileName + "-mini" + ".jpg";
+            String miniFileName = outFolder + File.separator + "mini" + File.separator + fileName + "-mini" + ".jpg";
             scale(imageFilePath, miniFileName);
             LocalDateTime miniTime = LocalDateTime.now();
             log.info("【{}】缩略图消耗：{} s", fullFileName, Duration.between(waterTime, miniTime).getSeconds());
